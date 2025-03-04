@@ -1,0 +1,250 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pos-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.header {
+  background-color: #ff5733;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.logo {
+  height: 75px; /* Increased from 60px to 75px */
+  max-width: 100%;
+  filter: brightness(1.15);
+  margin-right: -5px;
+}
+
+.system-name {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  color: #333;
+}
+
+/* Fixed Add Item panel */
+.add-item-panel {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-top: 20px;
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.order {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-top: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-table-container {
+  max-height: calc(100vh - 350px);
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+select {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  background-color: #f8f8f8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.total {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: right;
+}
+
+button {
+  background: #ff5733;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #e64a2e;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.clear-btn {
+  background-color: #6c757d;
+}
+
+.clear-btn:hover {
+  background-color: #5a6268;
+}
+
+.quantity-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.quantity-value {
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+}
+
+.remove-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #c82333;
+}
+
+.empty-order {
+  text-align: center;
+  color: #6c757d;
+  padding: 20px;
+}
+
+.add-item-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.add-item-controls select {
+  flex: 1;
+  min-width: 200px;
+}
+
+.add-btn {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0;
+  }
+  
+  .logo {
+    height: 60px; /* Adjusted mobile size as well */
+    margin-right: 0;
+  }
+  
+  .system-name {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+  
+  .add-item-controls {
+    flex-direction: column;
+  }
+  
+  .add-item-controls select, 
+  .add-item-controls button {
+    width: 100%;
+  }
+  
+  .order-table-container {
+    max-height: calc(100vh - 400px);
+  }
+}

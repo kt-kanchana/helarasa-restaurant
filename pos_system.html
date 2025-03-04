@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hela Rasa POS System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="header">
+    <img src="hela-logo.png" alt="Hela Rasa" class="logo">
+    <h1 class="system-name">POS System</h1>
+  </div>
+  
+  <div class="pos-container">
+    <!-- Add Item section moved to top -->
+    <div class="add-item-panel">
+      
+      <div class="add-item-controls">
+        <select id="category-select">
+          <!-- Categories will be added dynamically -->
+        </select>
+        <select id="item-select">
+          <!-- Items will be added dynamically -->
+        </select>
+        <button onclick="addSelectedItemToOrder()" class="add-btn">Add to Order</button>
+      </div>
+    </div>
+
+    <div class="order">
+      <h2>Order</h2>
+      <div class="order-table-container">
+        <table id="order-items">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Order items will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="total">
+        <strong>Total: LKR <span id="total-amount">0.00</span></strong>
+      </div>
+      <div class="action-buttons">
+        <button onclick="clearOrder()" class="clear-btn">Clear Order</button>
+        <button onclick="generateBill()">Generate Bill</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
