@@ -1,0 +1,13 @@
+Looking at the provided HTML code for the Hela Rasa restaurant website, I can identify the following image sizes:
+
+Logo image: 50x50 pixels
+Found in the header: <img src="/api/placeholder/50/50" alt="Hela Rasa Logo">
+Hero background image: 1200x600 pixels
+Used as background-image in the hero section: background-image: url('/api/placeholder/1200/600')
+Food category images: 400x300 pixels
+Used as background images for each category card: background-image: url('/api/placeholder/400/300')
+All of these images are placeholders that would need to be replaced with actual images in the final website.
+
+
+
+

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hela Rasa Restaurant</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #F1F8E9; /* Coconut White */
+            color: #6D4C41; /* Earthy Brown */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo h1 {
+            margin-left: 10px;
+            font-size: 24px;
+            color: #D32F2F; /* Rich Red */
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #6D4C41; /* Earthy Brown */
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: #F1F8E9; /* Coconut White */
+            color: #D32F2F; /* Rich Red */
+        }
+        
+        .social-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-icons a {
+            margin-left: 15px;
+            color: #388E3C; /* Deep Green */
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #FFB300; /* Golden Yellow */
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #6D4C41; /* Earthy Brown */
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: none; /* Remove single background image */
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            background-color: #333; /* Dark background color */
+        }
+        
+        .slideshow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .slideshow div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: slideshow 20s infinite;
+            opacity: 0;
+        }
+
+        .slideshow div:nth-child(1) {
+            background-image: url('Images/slide1.jpg');
+            animation-delay: 0s;
+        }
+
+        .slideshow div:nth-child(2) {
+            background-image: url('Images/slide2.jpg');
+            animation-delay: 5s;
+        }
+
+        .slideshow div:nth-child(3) {
+            background-image: url('Images/slide3.jpg');
+            animation-delay: 10s;
+        }
+
+        .slideshow div:nth-child(4) {
+            background-image: url('Images/slide4.jpg');
+            animation-delay: 15s;
+        }
+
+        @keyframes slideshow {
+            0% { opacity: 0; }
+            5% { opacity: 1; }
+            25% { opacity: 1; }
+            30% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding-top: 200px; /* Add some top padding to vertically center content */
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: #FFB300; /* Golden Yellow */
+            text-align: center;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: #fff; /* Make text white for better visibility */
+        }
+        
+        .order-btn {
+            display: inline-block;
+            background-color: #D32F2F; /* Rich Red */
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid #D32F2F; /* Rich Red */
+            margin: 0 auto; /* Center the button */
+        }
+        
+        /* Food Categories */
+        .food-categories {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #6D4C41; /* Earthy Brown */
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #FFB300; /* Golden Yellow */
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .category-card {
+            background-color: #F1F8E9; /* Coconut White */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(109, 76, 65, 0.1); /* Earthy Brown with opacity */
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-img {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .category-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .category-info h3 {
+            margin-bottom: 10px;
+            color: #D32F2F; /* Rich Red */
+            font-size: 1.2rem;
+        }
+        
+        .category-info p {
+            color: #6D4C41; /* Earthy Brown */
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .view-menu-btn {
+            color: #388E3C; /* Deep Green */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid #388E3C; /* Deep Green */
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .view-menu-btn:hover {
+            background-color: #388E3C; /* Deep Green */
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #6D4C41; /* Earthy Brown */
+            color: #F1F8E9; /* Coconut White */
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #FFB300; /* Golden Yellow */
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background-color: #0097A7; /* Turquoise Blue */
+        }
+        
+        .footer-column p, .footer-column li {
+            color: #F1F8E9; /* Coconut White */
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li a {
+            color: #F1F8E9; /* Coconut White */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #FFB300; /* Golden Yellow */
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(241, 248, 233, 0.2); /* Coconut White with opacity */
+            color: rgba(241, 248, 233, 0.7); /* Coconut White with opacity */
+            font-size: 0.8rem;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                order: 3;
+            }
+            
+            nav {
+                flex-basis: 100%;
+                order: 4;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0;
+                margin-bottom: 15px;
+            }
+            
+            .social-icons {
+                margin-left: auto;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .order-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="Images/logo.png" alt="Hela Rasa Logo">
+                <h1>Hela Rasa</h1>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Gallery</a></li>
+                </ul>
+            </nav>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="slideshow">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="container hero-content">
+            <h2>Authentic Sri Lankan Cuisine</h2>
+            <p>Experience the rich flavors and aromas of traditional Sri Lankan dishes prepared with love and care</p>
+            <a href="#" class="order-btn">Order Online</a>
+        </div>
+    </section>
+    
+    <!-- Food Categories Section -->
+    <section class="food-categories">
+        <div class="container">
+            <h2 class="section-title">Our Menu Categories</h2>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Rice & Curry.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Rice and Curry</h3>
+                        <p>Traditional Sri Lankan rice and curry dishes</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Street Food & Short Eats.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Street Food & Short Eats</h3>
+                        <p>Popular Sri Lankan street food and snacks</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Seafood Specials.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Seafood Specials</h3>
+                        <p>Fresh seafood prepared with unique spices</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Traditional Sri Lankan Dishes.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Traditional Sri Lankan Dishes</h3>
+                        <p>Authentic dishes from various regions of Sri Lanka</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Kottu_Kothu.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Kottu</h3>
+                        <p>Various types of kottu roti - a Sri Lankan specialty</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Chicken Specials.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Chicken Specials</h3>
+                        <p>Delicious chicken dishes with unique flavors</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Noodles.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Noodles</h3>
+                        <p>Variety of noodle dishes with Sri Lankan twist</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Pizza.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Pizza</h3>
+                        <p>Fusion pizzas with Sri Lankan flavors</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Healthy & Vegetarian Options.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Healthy and Vegetarian Options</h3>
+                        <p>Nutritious and delicious vegetarian dishes</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Salads.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Salads</h3>
+                        <p>Fresh and flavorful salads with local ingredients</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Western Classics.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Western Classics</h3>
+                        <p>Popular Western dishes with our unique touch</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Soups.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Soups</h3>
+                        <p>Warming and flavorful soups for all seasons</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Tandoori & Indian Flavors.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Tandoori & Indian Flavors</h3>
+                        <p>Delicious tandoori dishes and Indian specialties</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Desserts & Sweets.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Dessert & Sweets</h3>
+                        <p>Traditional and modern desserts to satisfy your sweet tooth</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Traditional Sri Lankan Dishes.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Beverages</h3>
+                        <p>Refreshing drinks and traditional Sri Lankan beverages</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background-image: url('Images/food\ photos/Kids Menu.jpg');"></div>
+                    <div class="category-info">
+                        <h3>Kids Menu</h3>
+                        <p>Kid-friendly dishes that they will love</p>
+                        <a href="#" class="view-menu-btn">View Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>Hela Rasa is dedicated to bringing authentic Sri Lankan cuisine to food lovers. Our recipes are crafted with care using traditional methods and the finest ingredients.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Advanced Technological Institute Ratnapura</li>
+                        <li><i class="fas fa-phone"></i> +94 45 223 1493</li>
+                        <li><i class="fas fa-mobile-alt"></i> +94 76 330 0542</li>
+                        <li><i class="fas fa-envelope"></i> info@helarasa.lk</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 10:00 AM - 10:00 PM</li>
+                        <li>Saturday & Sunday: 11:00 AM - 11:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hela Rasa PVT LTD. All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            
+            menuBtn.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+                    nav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
